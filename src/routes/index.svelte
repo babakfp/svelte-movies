@@ -15,6 +15,7 @@
   export let movies
   import MovieCard from '$lib/MovieCard.svelte'
 
+  // TODO: Remove if not gonna get used
   import { Swiper, SwiperSlide } from 'swiper/svelte';
 </script>
 

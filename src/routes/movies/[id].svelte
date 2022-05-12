@@ -1,7 +1,7 @@
 <script context="module">
   const API_KEY = '73191913f3905b31e407454465f3b785'
 
-  export async function load({ params, fetch }) {
+  export async function load({ fetch, params }) {
     const res = await fetch(`https://api.themoviedb.org/3/movie/${params.id}?page=1&api_key=${API_KEY}`)
     const data = await res.json()
 
