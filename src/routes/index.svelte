@@ -26,7 +26,7 @@
 
   <ul class="grid grid-cols-2 gap-6">
     {#each movies as movie}
-      <MovieCard {movie}/>
+      <MovieCard {...movie}/>
     {/each}
   </ul>
 </section>

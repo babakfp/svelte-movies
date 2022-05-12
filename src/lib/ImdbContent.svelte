@@ -16,7 +16,9 @@
 
   <div class="text-xs text">
     <span>{vote_average}</span>
-    <span class="text-2xs opacity-25">(</span><span class="text-2xs opacity-75">{vote_count}</span><span class="text-2xs opacity-25">)</span>
+    {#if vote_count}
+      <span class="text-2xs opacity-25">(</span><span class="text-2xs opacity-75">{vote_count}</span><span class="text-2xs opacity-25">)</span>
+    {/if}
   </div>
 
 </svelte:element>

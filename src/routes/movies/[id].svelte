@@ -48,7 +48,7 @@
 </script>
 
 <!-- Poster -->
-<div class="relative">
+<div class="relative -mt-12">
   <img class="w-full" src="https://image.tmdb.org/t/p/w500{movie.backdrop_path}" alt loading="lazy"/>
   
   <div class="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900"></div>
@@ -148,12 +148,4 @@
   <!-- Overview -->
   <p class="text-sm leading-6"><b>Overview: </b> {movie.overview}</p>
 
-</div>
-
-<div class="relative | container | flex items-center justify-center | mt-12">
-  <img class="absolute inset-0 w-full max-h-57" src="https://image.tmdb.org/t/p/w500{movie.belongs_to_collection.backdrop_path}" alt loading="lazy"/>
-  <div class="relative | grid gap-2 justify-items-center mt-4">
-    <img class="w-38 h-57 | rounded" src="https://image.tmdb.org/t/p/w500{movie.belongs_to_collection.poster_path}" alt loading="lazy"/>
-    <h4 class="text-sm font-semibold">{movie.belongs_to_collection.name}</h4>
-  </div>
 </div>

@@ -10,6 +10,9 @@ module.exports = {
       fontSize: {
         '2xs': ['0.625rem', { lineHeight: '0.875rem' }],
       },
+      borderRadius: {
+        DEFAULT: '8px',
+      },
     },
     container: {
       center: true,

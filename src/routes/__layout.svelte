@@ -1,9 +1,13 @@
 <script>
   import '../app.css'
+  import Header from '$lib/Header.svelte'
+  import Footer from '$lib/Footer.svelte'
 </script>
 
-<header class="h-4"></header>
+<Header/>
 
-<slot/>
+<div class="py-12">
+  <slot/>
+</div>
 
-<footer class="h-4"></footer>
+<Footer/>
