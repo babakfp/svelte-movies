@@ -30,7 +30,8 @@
 </section>
 
 <style lang="postcss">
-  section {
-    height: calc(100vh - 3.5rem - 3.5rem - 6rem);
+  :global(#main) {
+    /* 100vh - header and search and footer height */
+    height: calc(100vh - 3.5rem - 3.5rem - 3.5rem);
   }
 </style>
