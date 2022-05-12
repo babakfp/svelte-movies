@@ -2,8 +2,7 @@
   const API_KEY = '73191913f3905b31e407454465f3b785'
 
   export async function load({ params, fetch }) {
-    const API_URL = `https://api.themoviedb.org/3/movie/${params.id}?page=1&api_key=${API_KEY}`
-    const res = await fetch(API_URL)
+    const res = await fetch(`https://api.themoviedb.org/3/movie/${params.id}?page=1&api_key=${API_KEY}`)
     const data = await res.json()
 
     return {
@@ -15,7 +14,7 @@
 <script>
   export let movie
   
-  import ImdbContent from '$lib/ImdbContent.svelte'
+  import IconImdb from '$lib/icons/IconImdb.svelte'
   import InfoListItem from './_lib/InfoListItem.svelte'
   import PopOver from '$lib/PopOver.svelte'
 
@@ -54,27 +53,35 @@
   <div class="absolute inset-0 -bottom-2 bg-gradient-to-b from-transparent to-gray-900"></div>
 </div>
 
-<!-- TODO: Remove -->
-<!-- <img class="w-full" src="https://image.tmdb.org/t/p/w500/hUzeosd33nzE5MCNsZxCGEKTXaQ.png" alt loading="lazy"/> -->
-
 <!-- Info -->
 <div class="container | grid gap-4 | relative -mt-12">
   
   <!-- Titles -->
   <div class="grid gap-1">
-    <h1 class="text-2xl font-black">{movie.original_title} {movie.release_date.substring(0, 4)}</h1>
+    <h1 class="text-2xl font-black">{movie.original_title} ({movie.release_date.substring(0, 4)})</h1>
 
     <!-- Original Title -->
     {#if movie.original_title !== movie.title}
-      <h2 class="text-sm text-gray-400">{movie.title}</h2>
+      <h2 class="text-sm font-black text-gray-400">{movie.title}</h2>
     {/if}
 
     <!-- Tagline -->
-    <p class="text-xs text-gray-400">{movie.tagline}</p>
+    <p class="text-sm text-gray-400">{movie.tagline}</p>
   </div>
 
   <!-- IMDB -->
-  <ImdbContent vote_average={movie.vote_average} vote_count={movie.vote_count} imdb_id={movie.imdb_id}/>
+  <a class="inline-flex items-center gap-1" href="https://www.imdb.com/title/{movie.imdb_id}" target="_blank">
+    <IconImdb className="w-6 h-6"/>
+
+    <div class="flex items-center gap-0.5 | text-sm">
+      <span class="font-semibold">{movie.vote_average}</span>
+      {#if movie.vote_count}
+        <div class="text-xs">
+          <span class="text-gray-500">(</span><span class="text-gray-400">{movie.vote_count}</span><span class="text-gray-500">)</span>
+        </div>
+      {/if}
+    </div>
+  </a>
 
   <!-- Genres -->
   <ul class="flex flex-wrap gap-2">
@@ -84,68 +91,78 @@
       </li>
     {/each}
   </ul>
+  
+  <!-- Overview -->
+  <p class="text-sm leading-6"><b>Overview: </b> {movie.overview}</p>
 
   <!-- Info List -->
-  <ul class="my-2 list-inside list-disc space-y-2">
-    <InfoListItem name="Run Time">
+  <ul class="my-2 | list-inside list-disc space-y-2 | text-sm">
+    <InfoListItem title="Run Time">
       {movieRuntimeHoursRounded}<span class="font-normal">h</span> {movieRuntimeMinutesRounded}<span class="font-normal">min</span>
     </InfoListItem>
-    <InfoListItem name="Status">
-      {movie.status}
-    </InfoListItem>
-    <InfoListItem name="Adult">
-      {movie.adult === true ? 'Yes' : 'No'}
-    </InfoListItem>
+
+    <InfoListItem title="Status">{movie.status}</InfoListItem>
+
+    {#if movie.adult}
+      <InfoListItem title="Age Restricted">🔞+18</InfoListItem>
+    {/if}
     
-    <!-- Not important Info -->
+    <!-- Less Important Info -->
 
     <hr class="bg-gray-700 !my-3">
     
-    <InfoListItem name="Budget">
-      {converterMoneyToMillion(movie.budget)}
-    </InfoListItem>
-    <InfoListItem name="Revenue">
-      {converterMoneyToMillion(movie.revenue)}
-    </InfoListItem>
-    <InfoListItem name="Language">
+    {#if movie.budget > 0}
+      <InfoListItem title="Budget">
+        {converterMoneyToMillion(movie.budget)}
+      </InfoListItem>
+    {/if}
+
+    {#if movie.revenue > 0}
+      <InfoListItem title="Revenue">
+        {converterMoneyToMillion(movie.revenue)}
+      </InfoListItem>
+    {/if}
+
+    <InfoListItem title="Language">
       {movie.original_language.toUpperCase()}
     </InfoListItem>
-    <InfoListItem name="Spoken languages">
-      <ul class="inline-flex flex-wrap">
-        {#each movie.spoken_languages as lang, i}
-          <PopOver
-            wrapperTag="li"
-            title="{lang.iso_639_1.toUpperCase()}{i !== movie.spoken_languages.length - 1 ? ', ' : ''}"
-            content="{lang.english_name}: {lang.name}"
-          />
-        {/each}
-      </ul>
-    </InfoListItem>
-    <InfoListItem name="Production Countries">
+
+    {#if movie.spoken_languages.length > 1}
+      <InfoListItem title="Spoken languages">
+        <ul class="inline-flex flex-wrap">
+          {#each movie.spoken_languages as lang, i}
+            <PopOver
+              wrapperTag="li"
+              title="{lang.iso_639_1.toUpperCase()}{i !== movie.spoken_languages.length - 1 ? ', ' : ''}"
+              content="{lang.english_name}: {lang.name}"
+            />
+          {/each}
+        </ul>
+      </InfoListItem>
+    {/if}
+    
+    <!-- TODO: FUCK -->
+    <InfoListItem title={movie.production_companies.length === 1 ? 'Production Country' : 'Production Countries'}>
       <ul class="inline-flex flex-wrap">
         {#each movie.production_countries as country, i}
           <PopOver
             wrapperTag="li"
-            title="{country.iso_3166_1}{i !== movie.production_countries.length - 1 ? ', ' : ''}"
+            title={country.iso_3166_1}{i !== movie.production_countries.length - 1 ? `, ` : ''}
             content={country.name}
           />
         {/each}
       </ul>
     </InfoListItem>
-    <InfoListItem name="Production Companies">
+    
+    <InfoListItem title={movie.production_companies.length === 1 ? 'Production Company' : 'Production Companies'}>
       <ul class="inline-flex flex-wrap">
         {#each movie.production_companies as company, i}
-          <PopOver
-            wrapperTag="li"
-            title="{company.name}{i !== movie.production_companies.length - 1 ? ', ' : ''}"
-            content="From: {company.origin_country}"
-          />
+          <li>
+            {company.name}{i !== movie.production_companies.length - 1 ? ', ' : ''}
+          </li>
         {/each}
       </ul>
     </InfoListItem>
   </ul>
-  
-  <!-- Overview -->
-  <p class="text-sm leading-6"><b>Overview: </b> {movie.overview}</p>
 
 </div>

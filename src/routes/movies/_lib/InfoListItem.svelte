@@ -1,13 +1,11 @@
 <script>
-  export let name
+  export let title
   export let value
 </script>
 
-<li class="text-xs">
-  <span>{name}:</span>
+<li>
+  <span class="font-medium">{title}:</span>
   <slot>
-    <span class="font-medium">
-      {value}
-    </span>
+    <span>{value}</span>
   </slot>
 </li>
