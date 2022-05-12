@@ -24,7 +24,7 @@
     <a class="text-sm text-gray-400 underline" href="/movies">See More</a>
   </div>
 
-  <ul class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4  lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
+  <ul class="grid grid-cols-[repeat(auto-fill,minmax(9rem,1fr))] gap-6">
     {#each movies as movie}
       <li class="flex justify-center">
         <MovieCard {...movie}/>

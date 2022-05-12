@@ -9,7 +9,7 @@
 </script>
 
 <a
-  class="grid gap-2 | text-sm | duration-150 ease-in-out | hover:brightness-105 hover:scale-90"
+  class="grid gap-2 | w-full | text-sm | duration-150 ease-in-out | hover:brightness-105 hover:scale-90"
   href="/movies/{id}">
 
   <div class="relative">
@@ -21,7 +21,7 @@
       {release_date.substring(0, 4)}
     </span>
 
-    <img class="w-38 h-57 | rounded" src="https://image.tmdb.org/t/p/w200{poster_path}" alt loading="lazy"/>
+    <img class="w-full rounded" src="https://image.tmdb.org/t/p/w200{poster_path}" alt loading="lazy"/>
   </div>
   
   <h3 class="line-clamp-1">{original_title}</h3>
