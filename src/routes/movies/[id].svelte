@@ -48,10 +48,10 @@
 </script>
 
 <!-- Poster -->
-<div class="relative -mt-12">
+<div class="relative overflow-hidden -mt-12">
   <img class="w-full" src="https://image.tmdb.org/t/p/w500{movie.backdrop_path}" alt loading="lazy"/>
   
-  <div class="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900"></div>
+  <div class="absolute inset-0 -bottom-2 bg-gradient-to-b from-transparent to-gray-900"></div>
 </div>
 
 <!-- TODO: Remove -->

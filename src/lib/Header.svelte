@@ -6,8 +6,8 @@
   ]
 </script>
 
-<header class="border-b border-gray-700">
-  <nav class="container px-0 | flex items-center h-14 | text-sm">
+<header class="h-14 | border-b border-gray-700">
+  <nav class="container px-0 | flex items-center h-full | text-sm">
     <ul class="grid grid-cols-3 w-full h-full">
 
       {#each items as item}

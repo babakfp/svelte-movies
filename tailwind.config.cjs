@@ -2,7 +2,8 @@ module.exports = {
   content: ['./src/**/*.{html,js,svelte}'],
   theme: {
     extend: {
-      maxWidth: theme => theme('spacing'),
+      // maxWidth: theme => theme('spacing'),
+      // minWidth: theme => theme('spacing'),
       spacing: {
         38: '9.5rem',
         57: '14.25rem',

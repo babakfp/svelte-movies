@@ -6,8 +6,8 @@
 
 <Header/>
 
-<div class="py-12">
+<main class="py-12">
   <slot/>
-</div>
+</main>
 
 <Footer/>

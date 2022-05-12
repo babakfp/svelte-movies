@@ -14,19 +14,22 @@
 
 <script>
   export let movies
-  console.log(movies)
   import MovieCard from '$lib/MovieCard.svelte'
+
+  import { Swiper, SwiperSlide } from 'swiper/svelte';
 </script>
 
 <section class="container | grid gap-6">
   <div class="flex items-end justify-between">
     <h2 class="text-lg font-black">Popular</h2>
-    <a class="text-sm text-gray-400" href="/movies">See All</a>
+    <a class="text-sm text-gray-400 underline" href="/movies">See All</a>
   </div>
 
-  <ul class="grid grid-cols-2 gap-6">
+  <ul class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4  lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
     {#each movies as movie}
-      <MovieCard {...movie}/>
+      <li class="flex justify-center">
+        <MovieCard {...movie}/>
+      </li>
     {/each}
   </ul>
 </section>

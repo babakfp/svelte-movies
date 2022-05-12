@@ -20,7 +20,7 @@
   <slot>
     <span>{title}</span>
   </slot>
-  <span class="absolute top-full translate-y-1 left-1/2 -translate-x-1/2 | py-1 px-2 whitespace-nowrap font-normal | bg-gray-800 rounded | invisible opacity-0 pointer-events-none group-hover:visible group-hover:opacity-100 group-hover:pointer-events-auto | duration-150 ease-in-out">
+  <span class="z-10 absolute top-full translate-y-1 left-1/2 -translate-x-1/2 | py-1 px-2 whitespace-nowrap font-normal | bg-gray-800 rounded | invisible opacity-0 pointer-events-none group-hover:visible group-hover:opacity-100 group-hover:pointer-events-auto | duration-150 ease-in-out">
     {content}
   </span>
 </svelte:element>

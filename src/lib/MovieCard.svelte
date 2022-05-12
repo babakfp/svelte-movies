@@ -8,20 +8,21 @@
   import IconImdb from '$lib/icons/IconImdb.svelte'
 </script>
 
-<li class="flex text-sm">
-  <a
-    class="grid gap-2 | duration-150 ease-in-out | hover:brightness-105 hover:scale-90"
-    href="/movies/{id}">
+<a
+  class="grid gap-2 | text-sm | duration-150 ease-in-out | hover:brightness-105 hover:scale-90"
+  href="/movies/{id}">
 
-    <div class="relative">
-      <div class="absolute bottom-0 left-0 | flex items-center gap-1 | p-1 pr-1.5 | bg-gray-900 bg-opacity-50 backdrop-blur-sm rounded rounded-l-none">
-        <IconImdb/>
-        <span class="text-xs text">{vote_average}</span>
-      </div>
-
-      <img class="w-38 h-57 | rounded" src="https://image.tmdb.org/t/p/w200{poster_path}" alt loading="lazy"/>
+  <div class="relative">
+    <div class="absolute bottom-0 left-0 | flex items-center gap-1 | p-1 pr-1.5 | bg-gray-900 bg-opacity-50 backdrop-blur-sm rounded-tr rounded-bl">
+      <IconImdb/>
+      <span class="text-xs">{vote_average}</span>
     </div>
-    
-    <h3 class="line-clamp-1">{original_title} {release_date.substring(0, 4)}</h3>
-  </a>
-</li>
+    <span class="absolute bottom-0 right-0 | p-1 pl-1.5 | text-xs | bg-gray-900 bg-opacity-50 backdrop-blur-sm rounded-tl rounded-br">
+      {release_date.substring(0, 4)}
+    </span>
+
+    <img class="w-38 h-57 | rounded" src="https://image.tmdb.org/t/p/w200{poster_path}" alt loading="lazy"/>
+  </div>
+  
+  <h3 class="line-clamp-1">{original_title}</h3>
+</a>
