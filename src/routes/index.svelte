@@ -20,8 +20,8 @@
 
 <section class="container | grid gap-6">
   <div class="flex items-end justify-between">
-    <h2 class="text-lg font-black">Popular</h2>
-    <a class="text-sm text-gray-400 underline" href="/movies">See All</a>
+    <h2 class="text-xl font-semibold">Popular</h2>
+    <a class="text-sm text-gray-400 underline" href="/movies">See More</a>
   </div>
 
   <ul class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4  lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">

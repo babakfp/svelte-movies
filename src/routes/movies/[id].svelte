@@ -141,10 +141,10 @@
       </InfoListItem>
     {/if}
     
-    <!-- TODO: FUCK -->
     <InfoListItem title={movie.production_companies.length === 1 ? 'Production Country' : 'Production Countries'}>
       <ul class="inline-flex flex-wrap">
         {#each movie.production_countries as country, i}
+          <!-- TODO: FUCK -->
           <PopOver
             wrapperTag="li"
             title={country.iso_3166_1}{i !== movie.production_countries.length - 1 ? `, ` : ''}
@@ -158,6 +158,7 @@
       <ul class="inline-flex flex-wrap">
         {#each movie.production_companies as company, i}
           <li>
+            <!-- TODO: FUCK -->
             {company.name}{i !== movie.production_companies.length - 1 ? ', ' : ''}
           </li>
         {/each}
