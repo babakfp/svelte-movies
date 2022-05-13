@@ -3,7 +3,8 @@ module.exports = {
   theme: {
     extend: {
       // maxWidth: theme => theme('spacing'),
-      // minWidth: theme => theme('spacing'),
+      minWidth: theme => theme('spacing'),
+      minHeight: theme => theme('spacing'),
       spacing: {
         38: '9.5rem',
         57: '14.25rem',

@@ -10,7 +10,9 @@
 
 <a
   class="grid gap-2 | w-full | text-sm | duration-150 ease-in-out | hover:brightness-105 hover:scale-90"
-  href="/movies/{id}">
+  href="/movies/{id}"
+  sveltekit:prefetch
+>
 
   <div class="relative">
     <div class="absolute bottom-0 left-0 | flex items-center gap-1 | p-1 pr-1.5 | bg-gray-900 bg-opacity-50 backdrop-blur-sm rounded-tr rounded-bl">
@@ -21,7 +23,10 @@
       {release_date.substring(0, 4)}
     </span>
 
-    <img class="w-full rounded" src="https://image.tmdb.org/t/p/w200{poster_path}" alt loading="lazy"/>
+    <div class="relative">
+      <img class="w-full rounded" src="/movie-poster-placeholder.png" alt loading="eager"/>
+      <img class="absolute inset-0 rounded" src="https://image.tmdb.org/t/p/w200{poster_path}" alt loading="lazy"/>
+    </div>
   </div>
   
   <h3 class="line-clamp-1">{original_title}</h3>

@@ -1,6 +1,6 @@
 <script>
   export let title
-  export let value
+  export let value = ''
 </script>
 
 <li>

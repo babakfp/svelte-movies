@@ -1,7 +1,7 @@
 <script>
   const items = [
-    { title: 'Home',    href: '/' },
-    { title: 'Movies',  href: '/movies' },
+    { title: 'Home',    href: '/', prefetch: true },
+    { title: 'Movies',  href: '/movies', prefetch: true },
     { title: 'Github',  href: 'https://github.com/babakfp/Svelte-Movies' },
   ]
 </script>
@@ -16,6 +16,7 @@
             class="flex items-center px-8 justify-center h-full | text-gray-400 uppercase underline | border-r border-gray-700 | duration-150 ease-in-out | hover:text-gray-300"
             href={item.href}
             target={item.href.startsWith('http') ? '_blank' : ''}
+            sveltekit:prefetch={item.prefetch}
           >
             {item.title}
           </a>

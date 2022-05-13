@@ -42,15 +42,16 @@
       return `$${money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`
     }
   }
-
-  console.log(movie);
 </script>
 
 <!-- Poster -->
 <div class="relative overflow-hidden -mt-12">
-  <img class="w-full" src="https://image.tmdb.org/t/p/w500{movie.backdrop_path}" alt loading="lazy"/>
+  <div class="relative">
+    <img class="w-full" src="/movie-backdrop-placeholder.png" alt loading="eager"/>
+    <img class="absolute inset-0" src="https://image.tmdb.org/t/p/w500{movie.backdrop_path}" alt loading="lazy"/>
+  </div>
   
-  <div class="absolute inset-0 -bottom-2 bg-gradient-to-b from-transparent to-gray-900"></div>
+  <div class="absolute inset-0 -bottom-2 | bg-gradient-to-b from-transparent to-gray-900"></div>
 </div>
 
 <!-- Info -->
@@ -70,18 +71,20 @@
   </div>
 
   <!-- IMDB -->
-  <a class="inline-flex items-center gap-1" href="https://www.imdb.com/title/{movie.imdb_id}" target="_blank">
-    <IconImdb className="w-6 h-6"/>
-
-    <div class="flex items-center gap-0.5 | text-sm">
-      <span class="font-semibold">{movie.vote_average}</span>
-      {#if movie.vote_count}
-        <div class="text-xs">
-          <span class="text-gray-500">(</span><span class="text-gray-400">{movie.vote_count}</span><span class="text-gray-500">)</span>
-        </div>
-      {/if}
-    </div>
-  </a>
+  <div>
+    <a class="inline-flex items-center gap-1" href="https://www.imdb.com/title/{movie.imdb_id}" target="_blank">
+      <IconImdb className="w-6 h-6"/>
+  
+      <div class="flex items-center gap-0.5 | text-sm">
+        <span class="font-semibold">{movie.vote_average}</span>
+        {#if movie.vote_count}
+          <div class="text-xs">
+            <span class="text-gray-500">(</span><span class="text-gray-400">{movie.vote_count}</span><span class="text-gray-500">)</span>
+          </div>
+        {/if}
+      </div>
+    </a>
+  </div>
 
   <!-- Genres -->
   <ul class="flex flex-wrap gap-2">
