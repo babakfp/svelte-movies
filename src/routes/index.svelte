@@ -6,7 +6,7 @@
     const data = await res.json()
 
     return {
-      props: { movies: data.results }
+      props: { movies: data.results.slice(0, 14) }
     }
   }
 </script>
