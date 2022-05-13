@@ -16,7 +16,7 @@
   import MovieCard from '$lib/MovieCard.svelte'
 </script>
 
-<section class="container | grid gap-6">
+<section class="container">
   <ul class="grid grid-cols-[repeat(auto-fill,minmax(9rem,1fr))] gap-6">
     {#each movies as movie}
       <li class="flex justify-center">
