@@ -48,7 +48,7 @@
 <div class="relative overflow-hidden -mt-12">
   <div class="relative">
     <img class="w-full" src="/movie-backdrop-placeholder.png" alt loading="eager"/>
-    <img class="absolute inset-0" src="https://image.tmdb.org/t/p/w500{movie.backdrop_path}" alt loading="lazy"/>
+    <img class="absolute inset-0 w-full" src="https://image.tmdb.org/t/p/w500{movie.backdrop_path}" alt loading="lazy"/>
   </div>
   
   <div class="absolute inset-0 -bottom-2 | bg-gradient-to-b from-transparent to-gray-900"></div>
