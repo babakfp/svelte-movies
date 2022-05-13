@@ -46,7 +46,7 @@
 
 <!-- Poster -->
 <div class="relative overflow-hidden -mt-12">
-  <div class="relative">
+  <div class="relative max-w-screen-sm md:rounded-r md:overflow-hidden md:mt-8">
     <img class="w-full" src="/movie-backdrop-placeholder.png" alt loading="eager"/>
     <img class="absolute inset-0 w-full" src="https://image.tmdb.org/t/p/w500{movie.backdrop_path}" alt loading="lazy"/>
   </div>
@@ -55,118 +55,120 @@
 </div>
 
 <!-- Info -->
-<div class="container | grid gap-4 | relative -mt-12">
+<div class="container | -mt-12">
   
-  <!-- Titles -->
-  <div class="grid gap-1">
-    <h1 class="text-2xl font-black">{movie.original_title} ({movie.release_date.substring(0, 4)})</h1>
+  <div class="relative | grid gap-4 | md:max-w-screen-sm">
+    <!-- Titles -->
+    <div class="grid gap-1">
+      <h1 class="text-2xl font-black md:text-4xl">{movie.original_title} ({movie.release_date.substring(0, 4)})</h1>
 
-    <!-- Original Title -->
-    {#if movie.original_title !== movie.title}
-      <h2 class="text-sm font-black text-gray-400">{movie.title}</h2>
-    {/if}
+      <!-- Original Title -->
+      {#if movie.original_title !== movie.title}
+        <h2 class="text-sm font-black text-gray-400 md:text-base">{movie.title}</h2>
+      {/if}
 
-    <!-- Tagline -->
-    <p class="text-sm text-gray-400">{movie.tagline}</p>
-  </div>
+      <!-- Tagline -->
+      <p class="text-sm text-gray-400 md:text-base">{movie.tagline}</p>
+    </div>
 
-  <!-- IMDB -->
-  <div>
-    <a class="inline-flex items-center gap-1" href="https://www.imdb.com/title/{movie.imdb_id}" target="_blank">
-      <IconImdb className="w-6 h-6"/>
-  
-      <div class="flex items-center gap-0.5 | text-sm">
-        <span class="font-semibold">{movie.vote_average}</span>
-        {#if movie.vote_count}
-          <div class="text-xs">
-            <span class="text-gray-500">(</span><span class="text-gray-400">{movie.vote_count}</span><span class="text-gray-500">)</span>
-          </div>
-        {/if}
-      </div>
-    </a>
-  </div>
-
-  <!-- Genres -->
-  <ul class="flex flex-wrap gap-2">
-    {#each movie.genres as genre}
-      <li>
-        <div class="py-1 px-2 bg-gray-800 rounded text-xs text-gray-400">{genre.name}</div>
-      </li>
-    {/each}
-  </ul>
-  
-  <!-- Overview -->
-  <p class="text-sm leading-6"><b>Overview: </b> {movie.overview}</p>
-
-  <!-- Info List -->
-  <ul class="my-2 | list-inside list-disc space-y-2 | text-sm">
-    <InfoListItem title="Run Time">
-      {movieRuntimeHoursRounded}<span class="font-normal">h</span> {movieRuntimeMinutesRounded}<span class="font-normal">min</span>
-    </InfoListItem>
-
-    <InfoListItem title="Status">{movie.status}</InfoListItem>
-
-    {#if movie.adult}
-      <InfoListItem title="Age Restricted">🔞+18</InfoListItem>
-    {/if}
+    <!-- IMDB -->
+    <div>
+      <a class="inline-flex items-center gap-1" href="https://www.imdb.com/title/{movie.imdb_id}" target="_blank">
+        <IconImdb className="w-6 h-6"/>
     
-    <!-- Less Important Info -->
+        <div class="flex items-center gap-0.5 | text-sm">
+          <span class="font-semibold">{movie.vote_average}</span>
+          {#if movie.vote_count}
+            <div class="text-xs">
+              <span class="text-gray-500">(</span><span class="text-gray-400">{movie.vote_count}</span><span class="text-gray-500">)</span>
+            </div>
+          {/if}
+        </div>
+      </a>
+    </div>
 
-    <hr class="bg-gray-700 !my-3">
+    <!-- Genres -->
+    <ul class="flex flex-wrap gap-2">
+      {#each movie.genres as genre}
+        <li>
+          <div class="py-1 px-2 bg-gray-800 rounded text-xs text-gray-400">{genre.name}</div>
+        </li>
+      {/each}
+    </ul>
     
-    {#if movie.budget > 0}
-      <InfoListItem title="Budget">
-        {converterMoneyToMillion(movie.budget)}
+    <!-- Overview -->
+    <p class="text-sm leading-6 md:text-base md:leading-7"><b>Overview: </b> {movie.overview}</p>
+
+    <!-- Info List -->
+    <ul class="my-2 | list-inside list-disc space-y-2 | text-sm">
+      <InfoListItem title="Run Time">
+        {movieRuntimeHoursRounded}<span class="font-normal">h</span> {movieRuntimeMinutesRounded}<span class="font-normal">min</span>
       </InfoListItem>
-    {/if}
 
-    {#if movie.revenue > 0}
-      <InfoListItem title="Revenue">
-        {converterMoneyToMillion(movie.revenue)}
+      <InfoListItem title="Status">{movie.status}</InfoListItem>
+
+      {#if movie.adult}
+        <InfoListItem title="Age Restricted">🔞+18</InfoListItem>
+      {/if}
+      
+      <!-- Less Important Info -->
+
+      <hr class="bg-gray-700 !my-3">
+      
+      {#if movie.budget > 0}
+        <InfoListItem title="Budget">
+          {converterMoneyToMillion(movie.budget)}
+        </InfoListItem>
+      {/if}
+
+      {#if movie.revenue > 0}
+        <InfoListItem title="Revenue">
+          {converterMoneyToMillion(movie.revenue)}
+        </InfoListItem>
+      {/if}
+
+      <InfoListItem title="Language">
+        {movie.original_language.toUpperCase()}
       </InfoListItem>
-    {/if}
 
-    <InfoListItem title="Language">
-      {movie.original_language.toUpperCase()}
-    </InfoListItem>
-
-    {#if movie.spoken_languages.length > 1}
-      <InfoListItem title="Spoken languages">
+      {#if movie.spoken_languages.length > 1}
+        <InfoListItem title="Spoken languages">
+          <ul class="inline-flex flex-wrap">
+            {#each movie.spoken_languages as lang, i}
+              <PopOver
+                wrapperTag="li"
+                title="{lang.iso_639_1.toUpperCase()}{i !== movie.spoken_languages.length - 1 ? ', ' : ''}"
+                content="{lang.english_name}: {lang.name}"
+              />
+            {/each}
+          </ul>
+        </InfoListItem>
+      {/if}
+      
+      <InfoListItem title={movie.production_companies.length === 1 ? 'Production Country' : 'Production Countries'}>
         <ul class="inline-flex flex-wrap">
-          {#each movie.spoken_languages as lang, i}
+          {#each movie.production_countries as country, i}
+            <!-- TODO: FUCK -->
             <PopOver
               wrapperTag="li"
-              title="{lang.iso_639_1.toUpperCase()}{i !== movie.spoken_languages.length - 1 ? ', ' : ''}"
-              content="{lang.english_name}: {lang.name}"
+              title={country.iso_3166_1}{i !== movie.production_countries.length - 1 ? `, ` : ''}
+              content={country.name}
             />
           {/each}
         </ul>
       </InfoListItem>
-    {/if}
-    
-    <InfoListItem title={movie.production_companies.length === 1 ? 'Production Country' : 'Production Countries'}>
-      <ul class="inline-flex flex-wrap">
-        {#each movie.production_countries as country, i}
-          <!-- TODO: FUCK -->
-          <PopOver
-            wrapperTag="li"
-            title={country.iso_3166_1}{i !== movie.production_countries.length - 1 ? `, ` : ''}
-            content={country.name}
-          />
-        {/each}
-      </ul>
-    </InfoListItem>
-    
-    <InfoListItem title={movie.production_companies.length === 1 ? 'Production Company' : 'Production Companies'}>
-      <ul class="inline-flex flex-wrap">
-        {#each movie.production_companies as company, i}
-          <li>
-            <!-- TODO: FUCK -->
-            {company.name}{i !== movie.production_companies.length - 1 ? ', ' : ''}
-          </li>
-        {/each}
-      </ul>
-    </InfoListItem>
-  </ul>
+      
+      <InfoListItem title={movie.production_companies.length === 1 ? 'Production Company' : 'Production Companies'}>
+        <ul class="inline-flex flex-wrap">
+          {#each movie.production_companies as company, i}
+            <li>
+              <!-- TODO: FUCK -->
+              {company.name}{i !== movie.production_companies.length - 1 ? ', ' : ''}
+            </li>
+          {/each}
+        </ul>
+      </InfoListItem>
+    </ul>
+  </div>
 
 </div>
