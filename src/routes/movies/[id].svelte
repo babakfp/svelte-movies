@@ -46,12 +46,18 @@
 
 <!-- Poster -->
 <div class="relative overflow-hidden -mt-12">
-  <div class="relative max-w-screen-sm md:rounded-r md:overflow-hidden md:mt-8">
-    <img class="w-full" src="/movie-backdrop-placeholder.png" alt loading="eager"/>
-    <img class="absolute inset-0 w-full" src="https://image.tmdb.org/t/p/w500{movie.backdrop_path}" alt loading="lazy"/>
+  <div class="relative | md:max-w-screen-sm md:rounded-r md:mt-8">
+    <img class="w-full | md:rounded-r" src="/movie-backdrop-placeholder.png" alt loading="eager"/>
+    <img class="absolute inset-0 | w-full | md:rounded-r" src="https://image.tmdb.org/t/p/w500{movie.backdrop_path}" alt loading="lazy"/>
+    <div class="absolute inset-0 -bottom-2 | bg-gradient-to-b from-transparent to-gray-900"></div>
+    
+      <div class="hidden | md:block md:absolute md:top-1/2 md:-translate-y-1/2 right-0 translate-x-1/2">
+        <div class="relative w-44">
+          <img class="w-full rounded" src="/movie-poster-placeholder.png" alt loading="eager"/>
+          <img class="absolute inset-0 rounded" src="https://image.tmdb.org/t/p/w200{movie.poster_path}" alt loading="lazy"/>
+        </div>
+      </div>
   </div>
-  
-  <div class="absolute inset-0 -bottom-2 | bg-gradient-to-b from-transparent to-gray-900"></div>
 </div>
 
 <!-- Info -->
@@ -60,15 +66,15 @@
   <div class="relative | grid gap-4 | md:max-w-screen-sm">
     <!-- Titles -->
     <div class="grid gap-1">
-      <h1 class="text-2xl font-black md:text-4xl">{movie.original_title} ({movie.release_date.substring(0, 4)})</h1>
+      <h1 class="text-2xl font-black | md:text-4xl">{movie.original_title} ({movie.release_date.substring(0, 4)})</h1>
 
       <!-- Original Title -->
       {#if movie.original_title !== movie.title}
-        <h2 class="text-sm font-black text-gray-400 md:text-base">{movie.title}</h2>
+        <h2 class="text-sm font-black text-gray-400 | md:text-base">{movie.title}</h2>
       {/if}
 
       <!-- Tagline -->
-      <p class="text-sm text-gray-400 md:text-base">{movie.tagline}</p>
+      <p class="text-sm text-gray-400 | md:text-base">{movie.tagline}</p>
     </div>
 
     <!-- IMDB -->
@@ -97,7 +103,7 @@
     </ul>
     
     <!-- Overview -->
-    <p class="text-sm leading-6 md:text-base md:leading-7"><b>Overview: </b> {movie.overview}</p>
+    <p class="text-sm leading-6 | md:text-base md:leading-7"><b>Overview: </b> {movie.overview}</p>
 
     <!-- Info List -->
     <ul class="my-2 | list-inside list-disc space-y-2 | text-sm">
