@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 @layer base {
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
+
   html,
 	body {
 		@apply h-full overflow-x-hidden;
@@ -13,7 +15,7 @@
   }
 
   body {
-    font-family: Poppins;
+    font-family: "Poppins", sans-serif;
   }
 
   b,
