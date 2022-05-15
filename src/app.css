@@ -26,10 +26,6 @@
   svg {
     @apply w-4 h-4 fill-gray-300;
   }
-
-  .container {
-    @apply xl:!max-w-screen-xl;
-  }
 }
 
 @layer components {
@@ -49,5 +45,13 @@
   }
 
   /* END COMPONENT: hr */
+
+}
+
+@layer utilities {
+
+  .container {
+    @apply xl:!max-w-screen-xl;
+  }
 
 }
