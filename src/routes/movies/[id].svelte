@@ -47,18 +47,23 @@
 <!-- Poster -->
 <div class="-mt-12">
   <div class="relative | md:max-w-screen-sm md:rounded-r md:mt-8">
-    <div class="aspect-video animate-pulse bg-gray-700 md:rounded"></div>
-    <img class="absolute inset-0 | w-full | md:rounded-r" src="https://image.tmdb.org/t/p/w500{movie.backdrop_path}" alt="Movie poster"/>
 
-    <!-- Overlay -->
-    <div class="absolute inset-0 -bottom-2 | bg-gradient-to-b from-transparent to-gray-900"></div>
+    <!-- Poster image loading animation -->
+    <div class="aspect-video animate-pulse bg-gray-700 md:rounded"/>
+    <!-- Poster image itself -->
+    <img class="absolute inset-0 | w-full | md:rounded-r" src="https://image.tmdb.org/t/p/w500{movie.backdrop_path}" alt="Movie poster"/>
+    <!-- Gradient overlay -->
+    <div class="absolute inset-0 -bottom-2 | bg-gradient-to-b from-transparent to-gray-900"/>
     
     <div class="hidden | md:block md:absolute md:top-8 right-0 translate-x-1/2">
       <div class="relative w-44 bg-gray-900 rounded">
-        <div class="aspect-[2/3] animate-pulse bg-gray-700 rounded"></div>
+        <!-- Thumb image loading animation -->
+        <div class="aspect-[2/3] animate-pulse bg-gray-700 rounded"/>
+        <!-- Thumb image itself -->
         <img class="absolute inset-0 rounded" src="https://image.tmdb.org/t/p/w200{movie.poster_path}" alt="Movie thumb"/>
       </div>
     </div>
+
   </div>
 </div>
 
