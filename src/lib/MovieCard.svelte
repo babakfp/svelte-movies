@@ -21,12 +21,12 @@
       <!-- Thumb image itself -->
       <img class="absolute inset-0 | w-full h-full | rounded" src="https://image.tmdb.org/t/p/w200{poster_path}" alt="Movie thumb" loading="lazy"/>
     </div>
-    
-    <div class="absolute bottom-0 left-0 | flex items-center gap-1 | p-1 pr-1.5 | bg-gray-900 bg-opacity-50 rounded-tr rounded-bl">
+
+    <div class="absolute bottom-0 left-0 | flex items-center gap-1 | p-1 pr-1.5 | bg-gray-900 bg-opacity-75 rounded-tr rounded-bl">
       <IconImdb/>
       <span class="text-xs">{vote_average}</span>
     </div>
-    <span class="absolute bottom-0 right-0 | p-1 pl-1.5 | text-xs | bg-gray-900 bg-opacity-50 rounded-tl rounded-br">
+    <span class="absolute bottom-0 right-0 | p-1 pl-1.5 | text-xs | bg-gray-900 bg-opacity-75 rounded-tl rounded-br">
       {release_date.substring(0, 4)}
     </span>
 
