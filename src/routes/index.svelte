@@ -2,11 +2,26 @@
   const API_KEY = '73191913f3905b31e407454465f3b785'
   
   export async function load({ fetch }) {
-    const res = await fetch(`https://api.themoviedb.org/3/movie/popular?page=1&api_key=${API_KEY}`)
-    const data = await res.json()
 
-    return {
-      props: { movies: data.results.slice(0, 14) }
+    try {
+      const res = await fetch(`https://api.themoviedb.org/3/movie/popular?page=1&api_key=${API_KEY}`)
+      const data = await res.json()
+
+      if (res.ok) {
+        return {
+          props: { movies: data.results.slice(0, 14) }
+        }
+      }
+
+      return {
+        status: res.status,
+        error: new Error('Something went wrong!'),
+      }
+    } catch (error) {
+      return {
+        status: 500,
+        error: new Error('Something went wrong! Failed to fetch the content.'),
+      }
     }
   }
 </script>
