@@ -4,7 +4,7 @@
 </script>
 
 <li>
-  <span class="font-medium">{title}:</span>
+  <b>{title}:</b>
   <slot>
     <span>{value}</span>
   </slot>

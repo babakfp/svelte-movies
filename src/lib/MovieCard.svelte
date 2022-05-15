@@ -23,9 +23,11 @@
       {release_date.substring(0, 4)}
     </span>
 
-    <div class="relative">
-      <img class="w-full rounded" src="/movie-poster-placeholder.png" alt loading="eager"/>
-      <img class="absolute inset-0 rounded" src="https://image.tmdb.org/t/p/w200{poster_path}" alt loading="lazy"/>
+    <div class="relative bg-gray-900 rounded">
+      <!-- Thumb image loading animation -->
+      <div class="aspect-[2/3] animate-pulse bg-gray-700 rounded"/>
+      <!-- Thumb image itself -->
+      <img class="absolute inset-0 | w-full h-full | rounded" src="https://image.tmdb.org/t/p/w200{poster_path}" alt="Movie thumb" loading="lazy"/>
     </div>
   </div>
   
