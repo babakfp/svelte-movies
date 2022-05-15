@@ -2,11 +2,25 @@
   const API_KEY = '73191913f3905b31e407454465f3b785'
   
   export async function load({ fetch, params }) {
-    const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${params.id}`)
-    const data = await res.json()
+    try {
+      const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${params.id}`)
+      const data = await res.json()
 
-    return {
-      props: { movies: data.results }
+      if (res.ok) {
+        return {
+          props: { movies: data.results }
+        }
+      }
+      
+      return {
+        status: res.status,
+        error: new Error('Something went wrong!'),
+      }
+    } catch (error) {
+      return {
+        status: 500,
+        error: new Error('Something went wrong! Failed to fetch the content.'),
+      }
     }
   }
 </script>

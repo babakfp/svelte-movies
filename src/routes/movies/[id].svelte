@@ -2,11 +2,25 @@
   const API_KEY = '73191913f3905b31e407454465f3b785'
 
   export async function load({ fetch, params }) {
-    const res = await fetch(`https://api.themoviedb.org/3/movie/${params.id}?page=1&api_key=${API_KEY}`)
-    const data = await res.json()
+    try {
+      const res = await fetch(`https://api.themoviedb.org/3/movie/${params.id}?page=1&api_key=${API_KEY}`)
+      const data = await res.json()
 
-    return {
-      props: { movie: data }
+      if (res.ok) {
+        return {
+          props: { movie: data }
+        }
+      }
+      
+      return {
+        status: res.status,
+        error: new Error('Something went wrong!'),
+      }
+    } catch (error) {
+      return {
+        status: 500,
+        error: new Error('Something went wrong! Failed to fetch the content.'),
+      }
     }
   }
 </script>
@@ -56,9 +70,9 @@
     <div class="absolute inset-0 -bottom-2 | bg-gradient-to-b from-transparent to-gray-900"/>
     
     <div class="hidden | md:block md:absolute md:top-8 right-0 translate-x-1/2">
-      <div class="relative w-44 bg-gray-900 rounded">
-        <!-- Thumb image loading animation -->
-        <div class="aspect-[2/3] animate-pulse bg-gray-700 rounded"/>
+      <div class="relative w-44"><!-- bg-gray-900 rounded -->
+        <!-- Thumb image loading animation | animate-pulse bg-gray-700 rounded -->
+        <div class="aspect-[2/3] bg-gray-800 rounded"/>
         <!-- Thumb image itself -->
         <img class="absolute inset-0 | w-full h-full | rounded" src="https://image.tmdb.org/t/p/w200{movie.poster_path}" alt="Movie thumb"/>
       </div>
