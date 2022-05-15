@@ -48,7 +48,7 @@
 <div class="relative overflow-hidden -mt-12">
   <div class="relative | md:max-w-screen-sm md:rounded-r md:mt-8">
     <img class="w-full | md:rounded-r" src="/movie-backdrop-placeholder.png" alt loading="eager"/>
-    <img class="absolute inset-0 | w-full | md:rounded-r" src="https://image.tmdb.org/t/p/w500{movie.backdrop_path}" alt loading="lazy"/>
+    <img class="absolute inset-0 | w-full | md:rounded-r" src="https://image.tmdb.org/t/p/w500{movie.backdrop_path}" alt/>
     <div class="absolute inset-0 -bottom-2 | bg-gradient-to-b from-transparent to-gray-900"></div>
     
       <div class="hidden | md:block md:absolute md:top-1/2 md:-translate-y-1/2 right-0 translate-x-1/2">
