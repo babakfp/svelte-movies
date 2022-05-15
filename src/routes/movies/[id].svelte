@@ -51,7 +51,7 @@
     <img class="absolute inset-0 | w-full | md:rounded-r" src="https://image.tmdb.org/t/p/w500{movie.backdrop_path}" alt="Movie poster"/>
     <div class="absolute inset-0 -bottom-2 | bg-gradient-to-b from-transparent to-gray-900"></div>
     
-      <div class="hidden | md:block md:absolute md:top-1/2 md:-translate-y-1/2 right-0 translate-x-1/2">
+      <div class="hidden | md:block md:absolute md:top-8 right-0 translate-x-1/2">
         <div class="relative w-44">
           <img class="w-full rounded" src="/movie-poster-placeholder.png" loading="eager" alt="Movie thumb placeholder"/>
           <img class="absolute inset-0 rounded" src="https://image.tmdb.org/t/p/w200{movie.poster_path}" alt="Movie thumb"/>
