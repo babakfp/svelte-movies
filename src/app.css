@@ -7,11 +7,7 @@
 
   html,
 	body {
-		@apply h-full overflow-x-hidden;
-  }
-
-  html {
-		@apply scroll-smooth; 
+		@apply overflow-x-hidden;
   }
 
   body {
