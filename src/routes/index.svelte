@@ -32,7 +32,7 @@
 <section class="container | grid gap-6">
   <div class="flex items-end justify-between">
     <h2 class="text-xl font-semibold">Popular</h2>
-    <!-- <a class="text-sm text-gray-400 underline" href="/movies">See More</a> -->
+    <a class="text-sm text-gray-400 underline" href="/movies">See More</a>
   </div>
 
   <ul class="grid grid-cols-[repeat(auto-fill,minmax(9rem,1fr))] gap-6">

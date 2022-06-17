@@ -1,12 +1,12 @@
 <script context="module">
   export async function load({ fetch, params }) {
     try {
-      const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${import.meta.env.VITE_API_KEY}&query=${params.id}`)
+      const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${import.meta.env.VITE_API_KEY}&query=${params.query}`)
       const data = await res.json()
 
       if (res.ok) {
         return {
-          props: { movies: data.results }
+          props: { data, params }
         }
       }
       
@@ -24,19 +24,24 @@
 </script>
 
 <script>
-  export let movies
+  export let data
+  export let params
   import MovieCard from '$lib/MovieCard.svelte'
+  import Pagination from '$lib/Pagination.svelte'
 </script>
 
 <section class="container">
-  {#if movies.length > 0}
+  {#if data.results.length > 0}
     <ul class="grid grid-cols-[repeat(auto-fill,minmax(9rem,1fr))] gap-6">
-      {#each movies as movie}
+      {#each data.results as movie}
         <li class="flex justify-center">
           <MovieCard {...movie}/>
         </li>
       {/each}
     </ul>
+
+    <Pagination className="flex justify-center mt-8" href="/search/{params.query}/<page-number>" totalPages={data.total_pages} />
+
   {:else}
     Sorry, nothing found
   {/if}
