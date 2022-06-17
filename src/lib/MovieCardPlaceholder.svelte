@@ -5,6 +5,7 @@
 <div class="grid gap-2 | w-full | text-sm | pointer-events-none cursor-default select-none">
 
   <div class="relative">
+    <!-- Image -->
     <div class="aspect-[2/3] animate-pulse bg-gray-700 rounded"/>
 
     <div class="absolute bottom-0 left-0 | flex items-center gap-1 | p-1 pr-1.5 | bg-gray-900 bg-opacity-75 rounded-tr rounded-bl">
@@ -17,5 +18,6 @@
 
   </div>
   
-  <h3 class="line-clamp-1">Lorem, ipsum dolor.</h3>
+  <!-- Title -->
+  <div class="h-5 animate-pulse bg-gray-700 rounded"></div>
 </div>
