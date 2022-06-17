@@ -25,13 +25,18 @@
       {/if}
     </div>
 
-    <div class="absolute bottom-0 left-0 | flex items-center gap-1 | p-1 pr-1.5 | bg-gray-900 bg-opacity-75 rounded-tr rounded-bl">
-      <IconImdb/>
-      <span class="text-xs">{vote_average}</span>
-    </div>
-    <span class="absolute bottom-0 right-0 | p-1 pl-1.5 | text-xs | bg-gray-900 bg-opacity-75 rounded-tl rounded-br">
-      {release_date.substring(0, 4)}
-    </span>
+    {#if vote_average}
+      <div class="absolute bottom-0 left-0 | flex items-center gap-1 | p-1 pr-1.5 | bg-gray-900 bg-opacity-75 rounded-tr rounded-bl">
+        <IconImdb/>
+        <span class="text-xs">{vote_average}</span>
+      </div>
+    {/if}
+
+    {#if release_date}
+      <span class="absolute bottom-0 right-0 | p-1 pl-1.5 | text-xs | bg-gray-900 bg-opacity-75 rounded-tl rounded-br">
+        {release_date.substring(0, 4)}
+      </span>
+    {/if}
 
   </div>
   

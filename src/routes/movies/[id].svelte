@@ -57,30 +57,44 @@
 </script>
 
 <!-- Poster -->
-<div class="-mt-12">
-  <div class="relative | md:max-w-screen-sm md:rounded-r md:mt-8">
+{#if movie.backdrop_path}
+  <div class="-mt-12">
+    <div class="relative | md:max-w-screen-sm md:rounded-r md:mt-8">
 
-    <!-- Poster image loading animation -->
-    <div class="aspect-video animate-pulse bg-gray-700 md:rounded"/>
-    <!-- Poster image itself -->
-    <img class="absolute inset-0 | w-full | md:rounded-r" src="https://image.tmdb.org/t/p/w780{movie.backdrop_path}" alt="Movie poster"/>
-    <!-- Gradient overlay -->
-    <div class="absolute inset-0 -bottom-2 | bg-gradient-to-b from-transparent to-gray-900"/>
-    
-    <div class="hidden | md:block md:absolute md:top-8 right-0 translate-x-1/2">
-      <div class="relative w-44"><!-- bg-gray-900 rounded -->
-        <!-- Thumb image loading animation | animate-pulse bg-gray-700 rounded -->
-        <div class="aspect-[2/3] bg-gray-800 rounded"/>
-        <!-- Thumb image itself -->
-        <img class="absolute inset-0 | w-full h-full | rounded" src="https://image.tmdb.org/t/p/w200{movie.poster_path}" alt="Movie thumb"/>
-      </div>
+      <!-- Poster image loading animation -->
+      <div class="aspect-video animate-pulse bg-gray-700 md:rounded"/>
+      <!-- Poster image itself -->
+      <img class="absolute inset-0 | w-full | md:rounded-r" src="https://image.tmdb.org/t/p/w780{movie.backdrop_path}" alt="Movie poster"/>
+      <!-- Gradient overlay -->
+      <div class="absolute inset-0 -bottom-2 | bg-gradient-to-b from-transparent to-gray-900"/>
+      
+      {#if movie.poster_path}
+        <div class="hidden | md:block md:absolute md:top-8 right-0 translate-x-1/2">
+          <div class="relative w-44"><!-- bg-gray-900 rounded -->
+            <!-- Thumb image loading animation | animate-pulse bg-gray-700 rounded -->
+            <div class="aspect-[2/3] bg-gray-800 rounded"/>
+            <!-- Thumb image itself -->
+            <img class="absolute inset-0 | w-full h-full | rounded" src="https://image.tmdb.org/t/p/w342{movie.poster_path}" alt="Movie thumb"/>
+          </div>
+        </div>
+      {/if}
     </div>
-
   </div>
-</div>
+{/if}
+
+{#if !movie.backdrop_path && movie.poster_path}
+  <div class="container mb-8">
+    <div class="relative w-44"><!-- bg-gray-900 rounded -->
+      <!-- Thumb image loading animation | animate-pulse bg-gray-700 rounded -->
+      <div class="aspect-[2/3] bg-gray-800 rounded"/>
+      <!-- Thumb image itself -->
+      <img class="absolute inset-0 | w-full h-full | rounded" src="https://image.tmdb.org/t/p/w342{movie.poster_path}" alt="Movie thumb"/>
+    </div>
+  </div>
+{/if}
 
 <!-- Info -->
-<div class="container | -mt-12">
+<div class="container | {movie.backdrop_path && '-mt-12'}">
   
   <div class="relative | grid gap-4 | md:max-w-screen-sm">
     <!-- Titles -->
@@ -98,17 +112,19 @@
 
     <!-- IMDB -->
     <div>
-      <a class="inline-flex items-center gap-1" href="https://www.imdb.com/title/{movie.imdb_id}" target="_blank">
+      <a class="inline-flex items-center gap-1 hover:opacity-90" href="https://www.imdb.com/title/{movie.imdb_id}" target="_blank">
         <IconImdb className="w-6 h-6"/>
     
-        <div class="flex items-center gap-0.5 | text-sm">
-          <span class="font-semibold">{movie.vote_average}</span>
-          {#if movie.vote_count}
-            <div class="text-xs">
-              <span class="text-gray-500">(</span><span class="text-gray-400">{movie.vote_count}</span><span class="text-gray-500">)</span>
-            </div>
-          {/if}
-        </div>
+        {#if movie.vote_average}
+          <div class="flex items-center gap-0.5 | text-sm">
+            <span class="font-semibold">{movie.vote_average}</span>
+            {#if movie.vote_count}
+              <div class="text-xs">
+                <span class="text-gray-500">(</span><span class="text-gray-400">{movie.vote_count}</span><span class="text-gray-500">)</span>
+              </div>
+            {/if}
+          </div>
+        {/if}
       </a>
     </div>
 
@@ -122,7 +138,9 @@
     </ul>
     
     <!-- Overview -->
-    <p class="text-sm leading-6 | md:text-base md:leading-7"><b>Overview: </b> {movie.overview}</p>
+    {#if movie.overview}
+      <p class="text-sm leading-6 | md:text-base md:leading-7"><b>Overview: </b> {movie.overview}</p>
+    {/if}
 
     <!-- Info List -->
     <ul class="my-2 | list-inside list-disc space-y-2 | text-sm">
