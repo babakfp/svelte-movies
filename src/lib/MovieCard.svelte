@@ -12,6 +12,7 @@
   class="grid gap-2 | w-full | text-sm | duration-150 ease-in-out | hover:brightness-105 hover:scale-90"
   href="/movies/{id}"
   sveltekit:prefetch
+  title={title}
 >
 
   <div class="relative">
