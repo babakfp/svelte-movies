@@ -20,7 +20,9 @@
       <!-- Thumb image loading animation | animate-pulse bg-gray-700 rounded -->
       <div class="aspect-[2/3] bg-gray-800 rounded"/>
       <!-- Thumb image itself -->
-      <img class="absolute inset-0 | w-full h-full | rounded" src="https://image.tmdb.org/t/p/w342{poster_path}" alt="Movie thumb" loading="lazy"/>
+      {#if poster_path}
+        <img class="absolute inset-0 | w-full h-full | rounded" src="https://image.tmdb.org/t/p/w342{poster_path}" alt="Movie thumb" loading="lazy"/>
+      {/if}
     </div>
 
     <div class="absolute bottom-0 left-0 | flex items-center gap-1 | p-1 pr-1.5 | bg-gray-900 bg-opacity-75 rounded-tr rounded-bl">
