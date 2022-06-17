@@ -6,7 +6,7 @@
 </script>
 
 <nav class={className}>
-  <ul class="flex gap-2">
+  <ul class="flex flex-wrap gap-2">
     {#each [...Array(totalPages).keys()] as arrayId}
       {@const pageNumber = arrayId + 1}
       <li>
