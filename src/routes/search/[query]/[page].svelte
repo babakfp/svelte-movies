@@ -36,7 +36,13 @@
     <ul class="grid grid-cols-[repeat(auto-fill,minmax(9rem,1fr))] gap-6">
       {#each data.results as movie}
         <li class="flex justify-center">
-          <MovieCard {...movie}/>
+          <MovieCard
+            id={movie.id}
+            title={movie.title}
+            poster_path={movie.poster_path}
+            vote_average={movie.vote_average}
+            release_date={movie.release_date}
+          />
         </li>
       {/each}
     </ul>
