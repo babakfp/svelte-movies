@@ -29,11 +29,15 @@
 </script>
 
 <section class="container">
-  <ul class="grid grid-cols-[repeat(auto-fill,minmax(9rem,1fr))] gap-6">
-    {#each movies as movie}
-      <li class="flex justify-center">
-        <MovieCard {...movie}/>
-      </li>
-    {/each}
-  </ul>
+  {#if movies.length > 0}
+    <ul class="grid grid-cols-[repeat(auto-fill,minmax(9rem,1fr))] gap-6">
+      {#each movies as movie}
+        <li class="flex justify-center">
+          <MovieCard {...movie}/>
+        </li>
+      {/each}
+    </ul>
+  {:else}
+    Sorry, nothing found
+  {/if}
 </section>
