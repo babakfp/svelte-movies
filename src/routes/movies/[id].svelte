@@ -63,7 +63,7 @@
     <!-- Poster image loading animation -->
     <div class="aspect-video animate-pulse bg-gray-700 md:rounded"/>
     <!-- Poster image itself -->
-    <img class="absolute inset-0 | w-full | md:rounded-r" src="https://image.tmdb.org/t/p/w500{movie.backdrop_path}" alt="Movie poster"/>
+    <img class="absolute inset-0 | w-full | md:rounded-r" src="https://image.tmdb.org/t/p/w780{movie.backdrop_path}" alt="Movie poster"/>
     <!-- Gradient overlay -->
     <div class="absolute inset-0 -bottom-2 | bg-gradient-to-b from-transparent to-gray-900"/>
     
