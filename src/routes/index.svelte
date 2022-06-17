@@ -48,7 +48,7 @@
       <li class="flex justify-center">
         <MovieCard
           id={movie.id}
-          original_title={movie.original_title}
+          title={movie.title}
           poster_path={movie.poster_path}
           vote_average={movie.vote_average}
           release_date={movie.release_date}
@@ -78,7 +78,7 @@
         <li class="flex justify-center">
           <MovieCard
             id={movie.id}
-            original_title={movie.original_title}
+            title={movie.title}
             poster_path={movie.poster_path}
             vote_average={movie.vote_average}
             release_date={movie.release_date}

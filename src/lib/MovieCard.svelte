@@ -1,6 +1,6 @@
 <script>
   export let id
-  export let original_title
+  export let title
   export let poster_path
   export let vote_average
   export let release_date
@@ -32,5 +32,5 @@
 
   </div>
   
-  <h3 class="line-clamp-1">{original_title}</h3>
+  <h3 class="line-clamp-1">{title}</h3>
 </a>
