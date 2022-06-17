@@ -85,11 +85,11 @@
   <div class="relative | grid gap-4 | md:max-w-screen-sm">
     <!-- Titles -->
     <div class="grid gap-1">
-      <h1 class="text-2xl font-black | md:text-4xl">{movie.original_title} ({movie.release_date.substring(0, 4)})</h1>
+      <h1 class="text-2xl font-black | md:text-4xl">{movie.title} ({movie.release_date.substring(0, 4)})</h1>
 
       <!-- Original Title -->
-      {#if movie.original_title !== movie.title}
-        <h2 class="text-sm font-black text-gray-400 | md:text-base">{movie.title}</h2>
+      {#if movie.title !== movie.original_title}
+        <h2 class="text-sm font-black text-gray-400 | md:text-base">{movie.original_title}</h2>
       {/if}
 
       <!-- Tagline -->
