@@ -1,20 +1,18 @@
 <script context="module">
   export async function load({ fetch, params }) {
-    try {
-      const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${import.meta.env.VITE_API_KEY}&query=${params.query}`)
-      const data = await res.json()
+    const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${import.meta.env.VITE_API_KEY}&query=${params.query}`)
+    const data = await res.json()
 
-      if (res.ok) {
-        return {
-          props: { data, params }
-        }
-      }
-      
+    if (res.ok) {
       return {
-        status: res.status,
-        error: new Error('Something went wrong!'),
+        props: { data, params }
       }
-    } catch (error) {
+    } else if (data.status_message) {
+      return {
+        status: 401,
+        error: data.status_message,
+      }
+    } else {
       return {
         status: 500,
         error: new Error('Something went wrong! Failed to fetch the content.'),
@@ -46,7 +44,7 @@
       {/each}
     </ul>
 
-    <Pagination className="flex justify-center mt-8" href="/search/{params.query}/<page-number>" totalPages={data.total_pages} />
+    <Pagination className="flex justify-center mt-8" href="/search/{params.query}/<page-number>" totalPages={data.total_pages} page={1} />
 
   {:else}
     Sorry, nothing found

@@ -1,20 +1,18 @@
 <script context="module">
   export async function load({ fetch, params }) {
-    try {
-      const res = await fetch(`https://api.themoviedb.org/3/movie/${params.id}?api_key=${import.meta.env.VITE_API_KEY}`)
-      const data = await res.json()
+    const res = await fetch(`https://api.themoviedb.org/3/movie/${params.id}?api_key=${import.meta.env.VITE_API_KEY}`)
+    const data = await res.json()
 
-      if (res.ok) {
-        return {
-          props: { movie: data }
-        }
-      }
-      
+    if (res.ok) {
       return {
-        status: res.status,
-        error: new Error('Something went wrong!'),
+        props: { movie: data }
       }
-    } catch (error) {
+    } else if (data.status_message) {
+      return {
+        status: 401,
+        error: data.status_message,
+      }
+    } else {
       return {
         status: 500,
         error: new Error('Something went wrong! Failed to fetch the content.'),
