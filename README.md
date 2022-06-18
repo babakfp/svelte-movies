@@ -1,6 +1,6 @@
 # Svelte Movies
 
-A movie website created with SvelteKit and [The Movie Database](https://themoviedb.org)
+A movie website created with [SvelteKit](https://kit.svelte.dev) and [The Movie Database](https://themoviedb.org)
 
 ## How to get an API key
 
