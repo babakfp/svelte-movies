@@ -24,7 +24,6 @@
 <script>
   export let movies
   import MovieCard from '$lib/MovieCard.svelte'
-  import MovieCardPlaceholder from '$lib/MovieCardPlaceholder.svelte'
 </script>
 
 <section class="container | grid gap-6">
